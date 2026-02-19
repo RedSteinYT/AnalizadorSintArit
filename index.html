@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Analizador Sintáctico - Asignación de Tercetos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>Analizador de Expresiones Aritméticas</h2>
+            <p>Proceso de Asignación de Índices (Teoría Pariona)</p>
+        </header>
+
+        <section class="input-section">
+            <input type="text" id="inputExp" placeholder="Ejemplo: x = a + b * c" autocomplete="off">
+            <button onclick="ejecutarAnalisis()">Generar Código Objeto</button>
+        </section>
+
+        <main class="results">
+            <div class="panel">
+                <h3>1. Reglas (Gramática)</h3>
+                <div id="reglasLog" class="console"></div>
+            </div>
+            <div class="panel">
+                <h3>2. Traza de Asignación</h3>
+                <div id="trazaLog" class="console traza"></div>
+            </div>
+            <div class="panel">
+                <h3>3. Código Objeto</h3>
+                <div id="codigoObjeto" class="console tercetos"></div>
+            </div>
+        </main>
+    </div>
+    <script src="parser.js"></script>
+</body>
+</html>

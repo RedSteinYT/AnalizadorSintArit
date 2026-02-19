@@ -1,0 +1,53 @@
+:root {
+    --primary: #2c3e50;
+    --accent: #e67e22; /* Color naranja para resaltar asignación */
+    --bg: #ecf0f1;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);
+    margin: 0; padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+header { text-align: center; margin-bottom: 20px; border-bottom: 3px solid var(--primary); }
+
+.input-section { display: flex; gap: 10px; margin-bottom: 20px; }
+input { flex: 1; padding: 12px; font-size: 1.1rem; border: 2px solid #bdc3c7; border-radius: 5px; }
+
+button {
+    background: var(--primary);
+    color: white; border: none; padding: 0 20px;
+    border-radius: 5px; cursor: pointer; font-weight: bold;
+}
+
+.results {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+.console {
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 12px;
+    height: 400px;
+    overflow-y: auto;
+    border-radius: 5px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+}
+
+.traza { color: #f1c40f; } /* Amarillo para la traza */
+.tercetos { color: #2ecc71; } /* Verde para el resultado final */
+h3 { font-size: 1rem; color: var(--primary); margin-bottom: 8px; }
