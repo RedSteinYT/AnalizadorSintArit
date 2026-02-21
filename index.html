@@ -2,36 +2,72 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Analizador Sintáctico - Asignación de Tercetos</title>
+    <title>Parser AST - Zoom Interactivo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="contenedor-principal">
         <header>
-            <h2>Analizador de Expresiones Aritméticas</h2>
-            <p>Proceso de Asignación de Índices (Teoría Pariona)</p>
+            <div class="header-top">
+                <div>
+                    <h1>Analizador Sintáctico de Expresiones Aritméticas</h1>
+                    <p>Traducción Dirigida por Sintaxis con AST Interactivo</p>
+                </div>
+                <div class="toggle-tema">
+                    <button id="toggleTema" class="btn-toggle-tema" onclick="toggleTema()" title="Cambiar tema">
+                        <span class="icono-tema">🌙</span>
+                    </button>
+                </div>
+            </div>
         </header>
 
-        <section class="input-section">
-            <input type="text" id="inputExp" placeholder="Ejemplo: x = a + b * c" autocomplete="off">
-            <button onclick="ejecutarAnalisis()">Generar Código Objeto</button>
+        <section class="panel-control">
+            <div class="input-grupo">
+                <input type="text" id="inputExpresion" placeholder="Ej: 10 / 2 - 3" value="(8-2)-(4-1)">
+                <button onclick="ejecutarParser()">Analizar Expresión</button>
+            </div>
+            
+            <div class="info-resultados">
+                <div class="caja-info">
+                    <span class="etiqueta">ESTADO</span>
+                    <span id="estadoValidacion" class="badge">ESPERANDO</span>
+                </div>
+                <div class="caja-info">
+                    <span class="etiqueta">RESULTADO SEMÁNTICO</span>
+                    <span id="valorFinal" class="valor-texto">0</span>
+                </div>
+                <div class="caja-info center">
+                    <span class="etiqueta">VISUALIZACIÓN</span>
+                    <button id="btnVerArbol" class="btn-secundario" onclick="abrirModal()" disabled>Abrir Árbol Interactivo</button>
+                </div>
+            </div>
         </section>
 
-        <main class="results">
-            <div class="panel">
-                <h3>1. Reglas (Gramática)</h3>
-                <div id="reglasLog" class="console"></div>
-            </div>
-            <div class="panel">
-                <h3>2. Traza de Asignación</h3>
-                <div id="trazaLog" class="console traza"></div>
-            </div>
-            <div class="panel">
-                <h3>3. Código Objeto</h3>
-                <div id="codigoObjeto" class="console tercetos"></div>
-            </div>
-        </main>
+        <section class="panel-traza">
+            <h3>TRAZA DE DERIVACIÓN (CÁLCULOS INTERMEDIOS)</h3>
+            <div id="consolaTraza" class="consola"></div>
+        </section>
     </div>
+
+    <div id="modalArbol" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Árbol Sintáctico (AST)</h2>
+                <div class="controles-zoom">
+                    <button onclick="zoomOut()">➖</button>
+                    <button onclick="resetZoom()">100%</button>
+                    <button onclick="zoomIn()">➕</button>
+                </div>
+                <span class="btn-cerrar" onclick="cerrarModal()">&times;</span>
+            </div>
+            
+            <div id="lienzoViewport" class="viewport">
+                <div id="contenedorArbol" class="arbol-wrapper">
+                    </div>
+            </div>
+        </div>
+    </div>
+
     <script src="parser.js"></script>
 </body>
 </html>
